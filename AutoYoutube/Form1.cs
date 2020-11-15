@@ -11,6 +11,7 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -145,6 +146,7 @@ namespace AutoYoutube
                 {
                     if (ex.Message.Contains("remote"))
                     {
+                        CloseAllChrome();
                         chrome = (IWebDriver)new ChromeDriver(driverService, chromeOptions);
                     }
                     else
@@ -160,6 +162,21 @@ namespace AutoYoutube
 
         }
 
+        private void CloseAllChrome()
+        {
+            var processes = Process.GetProcessesByName("conhost");
+            foreach(Process pro in processes)
+            {
+                pro.Kill();
+            }
+
+            processes = Process.GetProcessesByName("chrome");
+            foreach (Process pro in processes)
+            {
+                pro.Kill();
+            }
+
+        }
         private void runManyEmailManyKey()
         {
             // int count = this.cookies.Count;
@@ -181,6 +198,7 @@ namespace AutoYoutube
                     {
                         if (ex.Message.Contains("remote"))
                         {
+                            CloseAllChrome();
                             chrome = (IWebDriver)new ChromeDriver(driverService, chromeOptions);
                         }
                         else
