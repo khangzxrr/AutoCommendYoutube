@@ -64,7 +64,38 @@ namespace AutoYoutube
 
         private List<string> readKeys() => ((IEnumerable<string>)File.ReadAllLines("key.txt")).Where<string>((Func<string, bool>)(s => !string.IsNullOrEmpty(s) && !string.IsNullOrWhiteSpace(s))).ToList<string>();
 
-        private List<string> readComments() => ((IEnumerable<string>)File.ReadAllLines("comment.txt")).Where<string>((Func<string, bool>)(s => !string.IsNullOrEmpty(s) && !string.IsNullOrWhiteSpace(s))).ToList<string>();
+        private List<string> readComments()
+        {
+            string spliter = "--";
+
+            List<string> comments = new List<string>();
+
+            string[] lines = File.ReadAllLines("comment.txt");
+            
+            if (lines[0] != spliter || lines.Last() != spliter)
+            {
+                MessageBox.Show("First line and Last line must be '--'\nPlease exit and try again");
+                Application.Exit();
+            }
+
+            string fulltext = "";
+            for(int i = 1; i < lines.Length; i++)
+            {
+                var line = lines[i];
+
+                if (line == spliter) //open collecting flag
+                {
+                    comments.Add(fulltext);
+                    fulltext = "";
+                    continue;
+                }
+
+                fulltext += line + '\n';
+            }
+
+
+            return comments;
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -88,6 +119,13 @@ namespace AutoYoutube
                 this.runManyEmailManyKey();
             }
                 
+        }
+
+        private IWebDriver createChrome()
+        {
+            var driver = (IWebDriver)new ChromeDriver(driverService, chromeOptions);
+            driver.Manage().Window.Maximize();
+            return driver;
         }
 
         private bool TestLogged(IWebDriver driver, string cookieStr)
@@ -126,7 +164,7 @@ namespace AutoYoutube
 
                 try
                 {
-                    chrome = (IWebDriver)new ChromeDriver(driverService, chromeOptions);
+                    chrome = createChrome();
 
                     HeaderModifier.GenerateOAuth2Token(chrome, cookieStr);
                     if (!TestLogged(chrome, cookieStr)) continue;
@@ -147,7 +185,7 @@ namespace AutoYoutube
                     if (ex.Message.Contains("remote"))
                     {
                         CloseAllChrome();
-                        chrome = (IWebDriver)new ChromeDriver(driverService, chromeOptions);
+                        chrome = createChrome();
                     }
                     else
                     {
@@ -182,7 +220,7 @@ namespace AutoYoutube
             // int count = this.cookies.Count;
             foreach (string cookieStr in cookies.GetCookies())
             {
-                IWebDriver chrome = (IWebDriver)new ChromeDriver(driverService, chromeOptions);
+                IWebDriver chrome = createChrome();
                 HeaderModifier.GenerateOAuth2Token(chrome, cookieStr);
 
                 if (!TestLogged(chrome, cookieStr)) continue;
@@ -199,7 +237,7 @@ namespace AutoYoutube
                         if (ex.Message.Contains("remote"))
                         {
                             CloseAllChrome();
-                            chrome = (IWebDriver)new ChromeDriver(driverService, chromeOptions);
+                            chrome = createChrome();
                         }
                         else
                         {

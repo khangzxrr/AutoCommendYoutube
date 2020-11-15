@@ -24,14 +24,7 @@ namespace AutoYoutube.Core.Extensions
           By by,
           int timeOut = 10)
         {
-            try
-            {
-                return new OpenQA.Selenium.Support.UI.WebDriverWait(webDriver, TimeSpan.FromSeconds((double)timeOut)).Until<IWebElement>(ExpectedConditions.ElementToBeClickable(by));
-            }
-            catch(Exception e)
-            {
-                return (IWebElement)null;
-            }
+            return new OpenQA.Selenium.Support.UI.WebDriverWait(webDriver, TimeSpan.FromSeconds((double)timeOut)).Until<IWebElement>(ExpectedConditions.ElementToBeClickable(by));
         }
 
         public static void GetVideoAndComment(
@@ -93,13 +86,14 @@ namespace AutoYoutube.Core.Extensions
                         try
                         {
                             webDriver.WebDriverWait(By.Id("simplebox-placeholder"), 5).Click();
-                            webDriver.WebDriverWait(By.Id("contenteditable-root")).SendKeys("1");
-                            webDriver.ExecuteJavaScript("document.getElementById(\"contenteditable-root\").innerHTML = \"" + comments[WebDriver.rnd.Next(comments.Count)] + "\";");
+                            webDriver.WebDriverWait(By.Id("contenteditable-root")).SendKeys(comments[WebDriver.rnd.Next(comments.Count)]);
+                            //webDriver.ExecuteJavaScript("document.getElementById(\"contenteditable-root\").innerHTML = \"" + comments[WebDriver.rnd.Next(comments.Count)] + "\";");
                             webDriver.WebDriverWait(By.Id("submit-button")).Click();
                             Thread.Sleep(delayDuration);
                         }
-                        catch
+                        catch(Exception ex)
                         {
+                            Console.WriteLine("Error at WebDriver: " + ex.Message + " " + ex.StackTrace);
                         }
                     }
                 }
