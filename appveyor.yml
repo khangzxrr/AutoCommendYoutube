@@ -4,5 +4,10 @@ before_build:
     cd AutoYoutube.Core
 
     nuget restore
+
+    cd ../AutoYoutube
+
+    nuget restore
+
 build:
   verbosity: normal
