@@ -86,8 +86,15 @@ namespace AutoYoutube.Core.Extensions
                         try
                         {
                             webDriver.WebDriverWait(By.Id("simplebox-placeholder"), 5).Click();
-                            webDriver.WebDriverWait(By.Id("contenteditable-root")).SendKeys(comments[WebDriver.rnd.Next(comments.Count)]);
-                            //webDriver.ExecuteJavaScript("document.getElementById(\"contenteditable-root\").innerHTML = \"" + comments[WebDriver.rnd.Next(comments.Count)] + "\";");
+                            webDriver.WebDriverWait(By.Id("contenteditable-root")).SendKeys("1");
+
+                            var parsingComment = comments[WebDriver.rnd.Next(comments.Count)].Replace("\n", "\\n")
+                                                    .Replace("'", "\\'");
+
+                            var comment = $@"document.getElementById('contenteditable-root').innerHTML = '{parsingComment}'";
+                            Console.WriteLine(comment);
+                            webDriver.ExecuteJavaScript(comment);
+                            
                             webDriver.WebDriverWait(By.Id("submit-button")).Click();
                             Thread.Sleep(delayDuration);
                         }
