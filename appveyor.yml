@@ -1,16 +1,5 @@
-version: 1.0.{build}
-branches:
-  only:
-  - master
-image: Visual Studio 2019
-configuration: Debug
-environment:
-  matrix:
-  - project_name: AutoYoutube
-  - project_name: AutoYoutube.Core
+version : 1.0.{build}
 before_build:
-- pwsh: "Write-Host &quot;---==[ BEFORE BUILD SCRIPT ]==---&quot;  \nWrite-Host $Env:project_name\ndotnet --version  \ndotnet restore $env:project_name/$env:project_name.csproj"
+  cmd: nuget restore
 build:
-  project: '%project_name%\%project_name%.csproj'
-  publish_nuget: true
   verbosity: normal
