@@ -1,8 +1,8 @@
 version : 1.0.{build}
 before_build:
-  cmd: >-
+  cmd:
     cd AutoYoutube.Core
 
-    nudget restore
+    nuget restore
 build:
   verbosity: normal
