@@ -9,7 +9,7 @@ before_build:
 
     nuget restore
 
-enviroment:
+environment:
   matrix:
     - project_name: AutoYoutube.Core/AutoYoutube.Core.sln
 
