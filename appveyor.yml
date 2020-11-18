@@ -10,8 +10,8 @@ before_build:
     nuget restore
 
 matrix:
-  project_name: AutoYoutube.Core/AutoYoutube.Core.sln
-  project_name: AutoYoutube/CommentAutomatic.sln
+  - project_name: AutoYoutube.Core/AutoYoutube.Core.sln
+  - project_name: AutoYoutube/CommentAutomatic.sln
 
 build:
   project: $(project_name)
