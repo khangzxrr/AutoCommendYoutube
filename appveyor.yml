@@ -1,4 +1,5 @@
 version : 1.0.{build}
+
 before_build:
   cmd:
     cd AutoYoutube.Core
@@ -11,14 +12,12 @@ before_build:
 
 environment:
   matrix:
-    - project_name: AutoYoutube.Core/AutoYoutube.Core.sln
+    - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
 
-    - project_name: AutoYoutube/CommentAutomatic.sln
+    - solution_name: AutoYoutube/CommentAutomatic.sln
 
 matrix:
   fast_finish: true
 
-build:
-  project: $(project_name)
-
-  verbosity: normal
+build_script:
+  - msbuild %solution_name%
