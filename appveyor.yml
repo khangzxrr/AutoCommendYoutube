@@ -19,5 +19,6 @@ environment:
 matrix:
   fast_finish: true
 
-build_script:
-  - msbuild %solution_name%
+build:
+  project: $(solution_name)
+  verbosity: normal
