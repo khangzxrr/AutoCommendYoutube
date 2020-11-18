@@ -10,6 +10,8 @@ before_build:
     nuget restore
 
 build:
-  project: AutoYoutube.Core.sln
+  project: AutoYoutube.Core/AutoYoutube.Core.sln
+
+  project: AutoYoutube/CommentAutomatic.sln
 
   verbosity: normal
