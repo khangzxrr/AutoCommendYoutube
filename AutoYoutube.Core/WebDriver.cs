@@ -82,6 +82,8 @@ namespace AutoYoutube.Core.Extensions
                     
                     if (webDriver.WebDriverWait(By.Id(nameof(comments))) != null)
                     {
+                        Thread.Sleep(delayDuration);
+
                         webDriver.ExecuteJavaScript("document.getElementById('comments').scrollIntoView();");
                         try
                         {
@@ -96,7 +98,6 @@ namespace AutoYoutube.Core.Extensions
                             webDriver.ExecuteJavaScript(comment);
                             
                             webDriver.WebDriverWait(By.Id("submit-button")).Click();
-                            Thread.Sleep(delayDuration);
                         }
                         catch(Exception ex)
                         {
