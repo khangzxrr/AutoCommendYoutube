@@ -23,7 +23,7 @@ build:
   verbosity: normal
 
 for:
-  - matrix:
+  matrix:
     - only:
       - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
     
