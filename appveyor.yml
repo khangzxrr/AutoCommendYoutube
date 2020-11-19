@@ -18,5 +18,5 @@ after_build:
     7z a release.zip bin/*
 
 artifacts:
-  - path: release.zip
+  - path: AutoYoutube/release.zip
     name: release
