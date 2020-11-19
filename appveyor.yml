@@ -2,32 +2,13 @@ version : 1.0.{build}
 
 before_build:
   cmd:
-    cd AutoYoutube.Core
+    cd AutoYoutube
 
     nuget restore
-
-    cd ../AutoYoutube
-
-    nuget restore
-
-environment:
-  matrix:
-    - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
-    - solution_name: AutoYoutube/CommentAutomatic.sln
 
 matrix:
   fast_finish: true
 
 build:
-  project: $(solution_name)
+  project: AutoYoutube/CommentAutomatic.sln
   verbosity: normal
-
-for:
--
-  matrix:
-    only:
-      - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
-
-  after_build:
-  - echo Finished build core, copy build folder to main project
-  - cp -r ../AutoYoutube.Core/bin .
