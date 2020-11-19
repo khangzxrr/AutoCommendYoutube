@@ -18,14 +18,10 @@ environment:
 matrix:
   fast_finish: true
 
+  - cmd: echo Hello
+  solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
+
 build:
   project: $(solution_name)
   verbosity: normal
 
-for:
-  matrix:
-    - only:
-      - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
-    
-    build_script:
-    - echo This is for core
