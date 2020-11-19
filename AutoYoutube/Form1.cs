@@ -202,17 +202,19 @@ namespace AutoYoutube
 
         private void CloseAllChrome()
         {
-            var processes = Process.GetProcessesByName("conhost");
+            var processes = Process.GetProcessesByName("chrome");
+            foreach (Process pro in processes)
+            {
+                pro.Kill();
+            }
+
+            processes = Process.GetProcessesByName("conhost");
             foreach(Process pro in processes)
             {
                 pro.Kill();
             }
 
-            processes = Process.GetProcessesByName("chrome");
-            foreach (Process pro in processes)
-            {
-                pro.Kill();
-            }
+            
 
         }
         private void runManyEmailManyKey()
