@@ -29,5 +29,5 @@ for:
       - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
 
   after_build:
-  - echo Finished build core
-  - ls
+  - echo Finished build core, copy build folder to main project
+  - cp -r ../AutoYoutube.Core/bin .
