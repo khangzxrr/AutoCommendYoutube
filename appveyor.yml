@@ -19,4 +19,4 @@ after_build:
 
 artifacts:
   - path: release.zip
-  - name: release
+    name: release
