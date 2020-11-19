@@ -12,8 +12,6 @@ before_build:
 
 environment:
   matrix:
-    - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
-
     - solution_name: AutoYoutube/CommentAutomatic.sln
 
 matrix:
