@@ -12,3 +12,11 @@ matrix:
 build:
   project: AutoYoutube/CommentAutomatic.sln
   verbosity: normal
+
+after_build:
+  cmd:
+    7z a release.zip bin/*
+
+artifacts:
+  - path: release.zip
+  - name: release
