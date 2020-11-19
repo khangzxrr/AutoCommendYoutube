@@ -13,6 +13,10 @@ before_build:
 environment:
   matrix:
     - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
+    - after_build:
+        - cmd:
+          ls
+
     - solution_name: AutoYoutube/CommentAutomatic.sln
 
 matrix:
@@ -21,12 +25,3 @@ matrix:
 build:
   project: $(solution_name)
   verbosity: normal
-
-after_build:
-  matrix:
-    only:
-      - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
-
-  cmd:
-    ls  
-    
