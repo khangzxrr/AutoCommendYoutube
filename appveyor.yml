@@ -31,5 +31,5 @@ deploy:
   artifact: release
   provider: GitHub
   auth_token:
-    secure: bb26f9816f40acad1a8962f8ebfd6f86cc8f3d44
+    secure: cde47ea02a838c57d470a6200fdadc76474d4299
   force_update: true
