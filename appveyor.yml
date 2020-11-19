@@ -4,6 +4,7 @@ before_build:
   cmd:
     cd AutoYoutube
 
+
     nuget restore
 
 matrix:
@@ -15,8 +16,20 @@ build:
 
 after_build:
   cmd:
+    cp *.txt bin/Debug/
+
     7z a release.zip bin/Debug
 
 artifacts:
   - path: AutoYoutube/release.zip
     name: release
+
+
+deploy:
+  release: AutomaticYoutubeCommend
+  description: 'Newest release from Vo Ngoc Khang'
+  artifact: release
+  provider: GitHub
+  auth_token:
+    secure: 338dcb9becb7bc585f9cab6c86beb2ccd9ea159f
+  force_update: true
