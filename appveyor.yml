@@ -15,7 +15,7 @@ build:
 
 after_build:
   cmd:
-    7z a release.zip bin/*
+    7z a release.zip bin/Debug
 
 artifacts:
   - path: AutoYoutube/release.zip
