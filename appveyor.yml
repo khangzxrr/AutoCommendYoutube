@@ -28,5 +28,6 @@ for:
     only:
       - solution_name: AutoYoutube.Core/AutoYoutube.Core.sln
 
-  build_script:
-  - echo Core build!!
+  after_build:
+  - echo Finished build core
+  - ls
