@@ -27,7 +27,7 @@ artifacts:
 
 deploy:
   release: AutomaticYoutubeCommend
-  description: 'Newest release from Vo Ngoc Khang'
+  description: 'Newest release from Vo Ngoc Khang APPVEYOR_REPO_COMMIT_MESSAGE'
   artifact: release
   provider: GitHub
   auth_token:

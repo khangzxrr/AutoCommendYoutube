@@ -11,6 +11,7 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -48,10 +49,9 @@ namespace AutoYoutube
 
         public Form1()
         {
-
-
-
             this.InitializeComponent();
+
+            numVideo.Text = ConfigurationManager.AppSettings.Get("default_video_count");
             this.webDrivers = new List<IWebDriver>();
             this.keys = this.readKeys();
             this.comments = this.readComments();
@@ -64,6 +64,14 @@ namespace AutoYoutube
 
         private List<string> readKeys() => ((IEnumerable<string>)File.ReadAllLines("key.txt")).Where<string>((Func<string, bool>)(s => !string.IsNullOrEmpty(s) && !string.IsNullOrWhiteSpace(s))).ToList<string>();
 
+
+        private List<string> readComments()
+        {
+            string[] lines = File.ReadAllLines("comment.txt");
+            return lines.ToList<string>();
+        }
+
+        /* read comment multiline
         private List<string> readComments()
         {
             string spliter = "--";
@@ -96,6 +104,7 @@ namespace AutoYoutube
 
             return comments;
         }
+        */
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -123,6 +132,7 @@ namespace AutoYoutube
 
         private IWebDriver createChrome()
         {
+            CloseAllChrome();
             var driver = (IWebDriver)new ChromeDriver(driverService, chromeOptions);
             driver.Manage().Window.Maximize();
             return driver;
@@ -356,7 +366,7 @@ namespace AutoYoutube
             this.numVideo.Name = "numVideo";
             this.numVideo.Size = new System.Drawing.Size(49, 22);
             this.numVideo.TabIndex = 5;
-            this.numVideo.Text = "30";
+            this.numVideo.Text = "10";
             // 
             // label1
             // 
