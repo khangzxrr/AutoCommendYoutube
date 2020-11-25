@@ -198,6 +198,8 @@ namespace AutoYoutube
                 // this.labelCountCookies.Text = count--.ToString();
             }
 
+            MessageBox.Show("Finished One-key-One-email!");
+
 
         }
 
@@ -254,6 +256,8 @@ namespace AutoYoutube
                 chrome.Quit();
                 //this.labelCountCookies.Text = count--.ToString();
             }
+
+            MessageBox.Show("Finished Many-Key-Many-Email");
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
