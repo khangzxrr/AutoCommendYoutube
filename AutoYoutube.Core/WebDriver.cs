@@ -98,6 +98,8 @@ namespace AutoYoutube.Core.Extensions
                             webDriver.ExecuteJavaScript(comment);
                             
                             webDriver.WebDriverWait(By.Id("submit-button")).Click();
+
+                            //Thread.Sleep(1000);
                         }
                         catch(Exception ex)
                         {

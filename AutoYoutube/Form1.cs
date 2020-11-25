@@ -132,7 +132,7 @@ namespace AutoYoutube
 
         private IWebDriver createChrome()
         {
-            CloseAllChrome();
+            //CloseAllChrome();
             var driver = (IWebDriver)new ChromeDriver(driverService, chromeOptions);
             driver.Manage().Window.Maximize();
             return driver;
@@ -175,8 +175,8 @@ namespace AutoYoutube
                 try
                 {
                     chrome = createChrome();
-
                     HeaderModifier.GenerateOAuth2Token(chrome, cookieStr);
+
                     if (!TestLogged(chrome, cookieStr)) continue;
 
                     int delayDuration = int.Parse(delayField.Text);
@@ -192,16 +192,7 @@ namespace AutoYoutube
 
                 catch (Exception ex)
                 {
-                    if (ex.Message.Contains("remote"))
-                    {
-                        CloseAllChrome();
-                        chrome = createChrome();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Error at running one email: " + ex.Message + " " + ex.StackTrace);
-                    }
-                    
+                    Console.WriteLine("Error at running one email: " + ex.Message + " " + ex.StackTrace);
                 }
 
                 // this.labelCountCookies.Text = count--.ToString();
@@ -250,6 +241,8 @@ namespace AutoYoutube
                         {
                             CloseAllChrome();
                             chrome = createChrome();
+
+                            HeaderModifier.GenerateOAuth2Token(chrome, cookieStr);
                         }
                         else
                         {
