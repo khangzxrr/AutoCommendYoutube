@@ -109,7 +109,7 @@
     <Content Include="comment.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="cookie.txt">
+    <Content Include="cookies.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="key.txt">

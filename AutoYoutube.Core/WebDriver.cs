@@ -99,7 +99,7 @@ namespace AutoYoutube.Core.Extensions
                             
                             webDriver.WebDriverWait(By.Id("submit-button")).Click();
 
-                            //Thread.Sleep(1000);
+                            Thread.Sleep(1500);
                         }
                         catch(Exception ex)
                         {

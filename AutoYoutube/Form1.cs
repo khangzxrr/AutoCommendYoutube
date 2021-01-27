@@ -51,12 +51,14 @@ namespace AutoYoutube
         {
             this.InitializeComponent();
 
+            CloseAllChrome();
+
             numVideo.Text = ConfigurationManager.AppSettings.Get("default_video_count");
             this.webDrivers = new List<IWebDriver>();
             this.keys = this.readKeys();
             this.comments = this.readComments();
 
-            this.cookies = new CookieManager("cookie.txt");
+            this.cookies = new CookieManager("cookies.txt");
             this.labelCountCookies.Text = cookies.GetCookies().Length.ToString();
             this.labelCountKeys.Text = this.keys.Count.ToString();
             this.labelCountComments.Text = this.comments.Count.ToString();
@@ -116,6 +118,11 @@ namespace AutoYoutube
 
 
             chromeOptions = new ChromeOptions();
+
+            //user profile
+            chromeOptions.BinaryLocation = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+            //======================
+
             chromeOptions.AddExtension("ModHeader.crx");
             KeyIndex = 0; //checkpoint keyindex
 
@@ -127,7 +134,7 @@ namespace AutoYoutube
             {
                 this.runManyEmailManyKey();
             }
-                
+
         }
 
         private IWebDriver createChrome()
@@ -167,33 +174,38 @@ namespace AutoYoutube
         private void runOneEmailOneKey()
         {
             //int count = this.cookies.Count;
-            IWebDriver chrome = null;
+            IWebDriver chrome = createChrome();
 
-            foreach (string cookieStr in cookies.GetCookies())
+            while (true)
             {
-
-                try
+                foreach (string cookieStr in cookies.GetCookies())
                 {
-                    chrome = createChrome();
-                    HeaderModifier.GenerateOAuth2Token(chrome, cookieStr);
 
-                    if (!TestLogged(chrome, cookieStr)) continue;
-
-                    int delayDuration = int.Parse(delayField.Text);
-                    chrome.GetVideoAndComment(this.keys[KeyIndex++], this.comments, delayDuration, checkBoxFilter.Checked ? "CAMSBAgCEAE%253D" : "CAASBAgBEAE%253D", int.Parse(numVideo.Text));
-
-                    if (KeyIndex == keys.Count)
+                    try
                     {
-                        KeyIndex = 0;
+
+                        HeaderModifier.GenerateOAuth2Token(chrome, cookieStr);
+
+                        if (!TestLogged(chrome, cookieStr)) continue;
+
+                        int delayDuration = int.Parse(delayField.Text);
+                        chrome.GetVideoAndComment(this.keys[KeyIndex++], this.comments, delayDuration, checkBoxFilter.Checked ? "CAMSBAgCEAE%253D" : "CAASBAgBEAE%253D", int.Parse(numVideo.Text));
+
+                        if (KeyIndex == keys.Count)
+                        {
+                            KeyIndex = 0;
+                        }
+
                     }
 
-                    chrome.Quit();
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error at running one email: " + ex.Message + " " + ex.StackTrace);
+                        CloseAllChrome();
+                        chrome = createChrome();
+                    }
                 }
 
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error at running one email: " + ex.Message + " " + ex.StackTrace);
-                }
 
                 // this.labelCountCookies.Text = count--.ToString();
             }
@@ -203,59 +215,56 @@ namespace AutoYoutube
 
         }
 
-        private void CloseAllChrome()
+        private void KillProcesses(Process[] processes)
         {
-            var processes = Process.GetProcessesByName("chrome");
             foreach (Process pro in processes)
             {
                 pro.Kill();
             }
+        }
+        private void CloseAllChrome()
+        {
+            var processes = Process.GetProcessesByName("chromedriver");
+            KillProcesses(processes);
+
+            processes = Process.GetProcessesByName("chrome");
+            KillProcesses(processes);
 
             processes = Process.GetProcessesByName("conhost");
-            foreach(Process pro in processes)
-            {
-                pro.Kill();
-            }
-
-            
-
+            KillProcesses(processes);
         }
         private void runManyEmailManyKey()
         {
             // int count = this.cookies.Count;
-            foreach (string cookieStr in cookies.GetCookies())
+            IWebDriver chrome = createChrome();
+
+            while (true)
             {
-                IWebDriver chrome = createChrome();
-                HeaderModifier.GenerateOAuth2Token(chrome, cookieStr);
-
-                if (!TestLogged(chrome, cookieStr)) continue;
-
-                foreach (string key in this.keys)
+                foreach (string cookieStr in cookies.GetCookies())
                 {
-                    try
-                    {
-                        int delayDuration = int.Parse(delayField.Text);
-                        chrome.GetVideoAndComment(key, this.comments, delayDuration, checkBoxFilter.Checked ? "CAMSBAgCEAE%253D" : "CAASBAgBEAE%253D", int.Parse(numVideo.Text));
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.Message.Contains("remote"))
-                        {
-                            CloseAllChrome();
-                            chrome = createChrome();
+                    HeaderModifier.GenerateOAuth2Token(chrome, cookieStr);
 
-                            HeaderModifier.GenerateOAuth2Token(chrome, cookieStr);
+                    if (!TestLogged(chrome, cookieStr)) continue;
+
+                    foreach (string key in this.keys)
+                    {
+                        try
+                        {
+                            int delayDuration = int.Parse(delayField.Text);
+                            chrome.GetVideoAndComment(key, this.comments, delayDuration, checkBoxFilter.Checked ? "CAMSBAgCEAE%253D" : "CAASBAgBEAE%253D", int.Parse(numVideo.Text));
                         }
-                        else
+                        catch (Exception ex)
                         {
                             Console.WriteLine("Error at running many email: " + ex.Message + " " + ex.StackTrace);
+                            CloseAllChrome();
+                            chrome = createChrome();
                         }
                     }
-                }
 
-                chrome.Quit();
-                //this.labelCountCookies.Text = count--.ToString();
+                    //this.labelCountCookies.Text = count--.ToString();
+                }
             }
+            
 
             MessageBox.Show("Finished Many-Key-Many-Email");
         }
