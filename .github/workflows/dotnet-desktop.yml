@@ -58,7 +58,7 @@ jobs:
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       Solution_Name: CommentAutomatic.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: AutoYoutube\CommentAutomatic.csproj     # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      Test_Project_Path: AutoCommendTest\AutoCommendTest.csproj     # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
       
     steps:
     - name: Checkout

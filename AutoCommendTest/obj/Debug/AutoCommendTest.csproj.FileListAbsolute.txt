@@ -1,0 +1,14 @@
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\bin\Debug\AutoCommendTest.dll
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\bin\Debug\AutoCommendTest.pdb
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\obj\Debug\AutoCommendTest.csprojAssemblyReference.cache
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\obj\Debug\AutoCommendTest.csproj.CoreCompileInputs.cache
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\obj\Debug\AutoCommendTest.csproj.CopyComplete
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\obj\Debug\AutoCommendTest.dll
+C:\Users\skyho\Desktop\AutoComment\AutoCommendTest\obj\Debug\AutoCommendTest.pdb

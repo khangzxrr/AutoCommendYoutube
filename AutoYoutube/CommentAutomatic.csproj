@@ -150,7 +150,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\source\repos\LoginHeaders\LoginHeaders\LoginHeaders.csproj">
+    <ProjectReference Include="..\LoginHeaders\LoginHeaders\LoginHeaders.csproj">
       <Project>{d239e8f6-d394-4a17-a4df-e573a6d31c12}</Project>
       <Name>LoginHeaders</Name>
     </ProjectReference>

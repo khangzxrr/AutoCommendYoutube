@@ -1,0 +1,11 @@
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\bin\Debug\LoginHeaders.dll
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\bin\Debug\LoginHeaders.pdb
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\bin\Debug\Newtonsoft.Json.dll
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\bin\Debug\WebDriver.dll
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\bin\Debug\Newtonsoft.Json.xml
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\bin\Debug\WebDriver.xml
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\obj\Debug\LoginHeaders.csproj.CoreCompileInputs.cache
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\obj\Debug\LoginHeaders.csproj.CopyComplete
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\obj\Debug\LoginHeaders.dll
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\obj\Debug\LoginHeaders.pdb
+C:\Users\skyho\source\repos\LoginHeaders\LoginHeaders\obj\Debug\LoginHeaders.csprojAssemblyReference.cache
