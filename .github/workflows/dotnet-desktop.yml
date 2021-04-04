@@ -74,7 +74,7 @@ jobs:
       uses: NuGet/setup-nuget@latest
       
     - name: Restore NuGet Packages
-      run: nuget restore ${{ Solution_Name }}
+      run: nuget restore ${{ env.Solution_Name }}
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test
