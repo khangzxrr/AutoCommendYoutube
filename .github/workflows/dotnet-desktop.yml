@@ -59,7 +59,8 @@ jobs:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       Solution_Name: CommentAutomatic.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: AutoCommendTest\AutoCommendTest.csproj     # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      
+      Wap_Project_Directory: CommentAutomatic.Package
+      Wap_Project_Name: CommentAutomatic.Package.warpproj
     steps:
     - name: Checkout
       uses: actions/checkout@v2
