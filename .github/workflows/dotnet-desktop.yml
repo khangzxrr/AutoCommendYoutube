@@ -77,6 +77,7 @@ jobs:
       run: |
         cd AutoYoutube
         nuget install packages.config
+        ls
         cd ../AutoYoutube.Core
         nuget install packages.config
         cd ../LoginHeaders
