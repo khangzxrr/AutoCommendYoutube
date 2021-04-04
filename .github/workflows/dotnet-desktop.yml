@@ -77,9 +77,9 @@ jobs:
       run: |
         cd AutoYoutube
         nuget install packages.config
-        cd AutoYoutube.Core
+        cd ../AutoYoutube.Core
         nuget install packages.config
-        cd LoginHeaders
+        cd ../LoginHeaders
         nuget install packages.config
     # Execute all unit tests in the solution
     - name: Execute unit tests
