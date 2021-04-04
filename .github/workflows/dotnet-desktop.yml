@@ -74,7 +74,13 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.5
       
     - name: Restore NuGet Packages
-      run: nuget restore ${{ env.Solution_Name }}
+      run: |
+        cd AutoYoutube
+        nuget install packages.config
+        cd AutoYoutube.Core
+        nuget install packages.config
+        cd LoginHeaders
+        nuget install packages.config
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test
