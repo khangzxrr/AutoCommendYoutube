@@ -71,12 +71,17 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
       
     - name: Setup NuGet
-      uses: nuget/setup-nuget@v1
-      with:
-        nuget-version: '5.x'
+      uses: NuGet/setup-nuget@v1.0.5
       
     - name: Restore NuGet Packages
-      run: nuget restore ${{ env.Solution_Name }}
+      run: |
+        cd AutoYoutube
+        nuget install packages.config -OutputDirectory packages
+        ls
+        cd ../AutoYoutube.Core
+        nuget install packages.config -OutputDirectory packages
+        cd ../LoginHeaders
+        nuget install packages.config -OutputDirectory packages
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test
@@ -92,14 +97,3 @@ jobs:
         name: AutoCommendYoutube
         path: AutoYoutube\bin\Debug
         Configuration: ${{ matrix.configuration }}
-
-    # Remove the pfx
-    - name: Remove the pfx
-      run: Remove-Item -path $env:Wap_Project_Directory\$env:Signing_Certificate
-
-    # Upload the MSIX package: https://github.com/marketplace/actions/upload-artifact
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: MSIX Package
-        path: ${{ env.Wap_Project_Directory }}\AppPackages
