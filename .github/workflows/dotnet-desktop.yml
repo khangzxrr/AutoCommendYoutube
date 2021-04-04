@@ -96,4 +96,15 @@ jobs:
       with:
         name: AutoCommendYoutube
         path: AutoYoutube\bin\Debug
+<<<<<<< HEAD
         Configuration: ${{ matrix.configuration }}
+=======
+        Configuration: ${{ matrix.configuration }}
+
+    # Upload the MSIX package: https://github.com/marketplace/actions/upload-artifact
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: MSIX Package
+        path: ${{ env.Wap_Project_Directory }}\AppPackages
+>>>>>>> af5ceca38bbff5c2a1a313e1432c8cc986c85436
