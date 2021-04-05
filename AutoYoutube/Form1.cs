@@ -15,7 +15,6 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Automation;
@@ -66,7 +65,6 @@ namespace AutoYoutube
         }
 
         private List<string> readKeys() => ((IEnumerable<string>)File.ReadAllLines("key.txt")).Where<string>((Func<string, bool>)(s => !string.IsNullOrEmpty(s) && !string.IsNullOrWhiteSpace(s))).ToList<string>();
-
 
         private List<string> readComments()
         {
@@ -156,7 +154,10 @@ namespace AutoYoutube
 
                     driver = new ChromeDriver(driverService, chromeOptions, TimeSpan.FromSeconds(30));
 
-                    foreach(var window in driver.WindowHandles)
+                    var devtools = driver.GetDevToolsSession().GetVersionSpecificDomains<OpenQA.Selenium.DevTools.V89.DevToolsSessionDomains>();
+                    
+
+                    foreach (var window in driver.WindowHandles)
                     {
                         driver.SwitchTo().Window(window);
                         if (driver.WindowHandles.Count == 1)

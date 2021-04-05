@@ -21,3 +21,15 @@ C:\Users\skyho\Desktop\AutoComment\AutoYoutube.Core\obj\Debug\AutoYoutube.Core.c
 C:\Users\skyho\Desktop\AutoComment\AutoYoutube.Core\obj\Debug\AutoYoutube.Core.dll
 C:\Users\skyho\Desktop\AutoComment\AutoYoutube.Core\obj\Debug\AutoYoutube.Core.pdb
 C:\Users\skyho\Desktop\AutoComment\AutoYoutube.Core\obj\Debug\AutoYoutube.Core.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\obj\Debug\AutoYoutube.Core.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\obj\Debug\AutoYoutube.Core.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\obj\Debug\AutoYoutube.Core.dll
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\bin\Debug\AutoYoutube.Core.dll
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\bin\Debug\AutoYoutube.Core.pdb
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\bin\Debug\SeleniumExtras.WaitHelpers.dll
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\bin\Debug\WebDriver.dll
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\bin\Debug\WebDriver.Support.dll
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\bin\Debug\WebDriver.xml
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\bin\Debug\WebDriver.Support.xml
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\obj\Debug\AutoYoutube.Core.csproj.CopyComplete
+C:\Users\Admin\Desktop\AutoCommendYoutube\AutoYoutube.Core\obj\Debug\AutoYoutube.Core.pdb
