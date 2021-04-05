@@ -76,7 +76,7 @@ jobs:
     - name: Restore NuGet Packages
       run: |
         cd AutoYoutube
-        nuget restore ${{Solution_Name}}
+        nuget restore ${{ env.Solution_Name }}
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test
