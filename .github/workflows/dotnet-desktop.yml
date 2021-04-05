@@ -76,11 +76,7 @@ jobs:
     - name: Restore NuGet Packages
       run: |
         cd AutoYoutube
-        nuget install packages.config -OutputDirectory packages
-        cd ../AutoYoutube.Core
-        nuget install packages.config -OutputDirectory packages
-        cd ../LoginHeaders
-        nuget install packages.config -OutputDirectory packages
+        nuget restore ${{ env.Solution_Name }}
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test
